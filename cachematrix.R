@@ -1,40 +1,42 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Creating object for caching matrix inverse
 
-## Write a short comment describing this function
+## The following f creates object - a list - with f. for setting
+## matrix, getting it, setting inverse and getting it
 
 makeCacheMatrix <- function(x = matrix()) {
   
   InvMatrix<-NULL
   
-#   SetMatrix<-function(y)
-#   {
-#     InvMatrix<-NULL
-#     x<<-y
-#   }
+  SetMatrix<-function(y) #set or change inpuet matrix
+  {
+    InvMatrix<<-NULL
+    x<<-y
+  }
   
-  GetMatrix<-function() x
+  GetMatrix<-function() x # get input matrix
   
-  SetInvMatrix<-function(im) InvMatrix<<-im
+  SetInvMatrix<-function(im) InvMatrix<<-im #set inv matrix
   
-  GetInvMatrix<-function() InvMatrix
+  GetInvMatrix<-function() InvMatrix #get inv matrix
   
-  list(GetMatrix= GetMatrix,
+  list(SetMatrix= SetMatrix,GetMatrix= GetMatrix,
        SetInvMatrix=SetInvMatrix,GetInvMatrix=GetInvMatrix)
 }
 
 
-## Write a short comment describing this function
+## F. cache solve function result, input should be created using makeCacheMatrix
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-  InvMatrix<-x$GetInvMatrix()
+  InvMatrix<-x$GetInvMatrix() #get current state of inv matrix
   if(!is.null(InvMatrix))
   {
-    message("getting cached data")
+    #it is not null so it can be used
+    message("getting cached data") 
   }
-  else
+  else                            
   {
+    #inv has not been calculated so do it
     message("no cached data")
     InvMatrix<-solve(x$GetMatrix())
     x$SetInvMatrix(InvMatrix)
