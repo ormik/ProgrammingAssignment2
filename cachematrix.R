@@ -37,7 +37,7 @@ cacheSolve <- function(x, ...) {
   {
     message("no cached data")
     InvMatrix<-solve(x$GetMatrix())
-    x$SetMatrix(InvMatrix)
+    x$SetInvMatrix(InvMatrix)
   }
 
   InvMatrix
