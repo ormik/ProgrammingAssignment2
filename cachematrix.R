@@ -7,11 +7,11 @@ makeCacheMatrix <- function(x = matrix()) {
   
   InvMatrix<-NULL
   
-  SetMatrix<-function(y)
-  {
-    InvMatrix<-NULL
-    x<<-y
-  }
+#   SetMatrix<-function(y)
+#   {
+#     InvMatrix<-NULL
+#     x<<-y
+#   }
   
   GetMatrix<-function() x
   
@@ -19,7 +19,7 @@ makeCacheMatrix <- function(x = matrix()) {
   
   GetInvMatrix<-function() InvMatrix
   
-  list(SetMatrix=SetMatrix, GetMatrix= GetMatrix,
+  list(GetMatrix= GetMatrix,
        SetInvMatrix=SetInvMatrix,GetInvMatrix=GetInvMatrix)
 }
 
